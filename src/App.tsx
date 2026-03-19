@@ -8,6 +8,7 @@ import AppLayout from "./components/layout/AppLayout"
 import BugTrackerPage from "./pages/BugTrackerPage"
 import AnalyticsPage from "./pages/AnalyticsPage"
 import TeamPage from "./pages/TeamPage"
+import SettingsPage from "./pages/SettingsPage"
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="bugs" element={<BugTrackerPage />} />
           <Route path="analytics" element={<AnalyticsPage />} />
           <Route path="team" element={<TeamPage />} />
+          <Route path="settings" element={<SettingsPage />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
