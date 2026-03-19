@@ -3,6 +3,7 @@ import { useAuthStore } from "./store/authStore"
 import LoginPage from "./pages/LoginPage"
 import RegisterPage from "./pages/RegisterPage"
 import DashboardPage from "./pages/DashboardPage"
+import KanbanPage from "./pages/KanbanPage"
 import AppLayout from "./components/layout/AppLayout"
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -21,14 +22,14 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Guest routes */}
-        <Route path="/login" element={<GuestRoute><LoginPage /></GuestRoute>} />
+        <Route path="/login"    element={<GuestRoute><LoginPage /></GuestRoute>} />
         <Route path="/register" element={<GuestRoute><RegisterPage /></GuestRoute>} />
 
-        {/* Protected routes */}
         <Route path="/" element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<DashboardPage />} />
+          <Route path="projects/:id" element={<KanbanPage />} />
+          <Route path="my-tasks" element={<DashboardPage />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
