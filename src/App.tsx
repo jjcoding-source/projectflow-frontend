@@ -5,6 +5,7 @@ import RegisterPage from "./pages/RegisterPage"
 import DashboardPage from "./pages/DashboardPage"
 import KanbanPage from "./pages/KanbanPage"
 import AppLayout from "./components/layout/AppLayout"
+import BugTrackerPage from "./pages/BugTrackerPage"
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="dashboard" element={<DashboardPage />} />
           <Route path="projects/:id" element={<KanbanPage />} />
           <Route path="my-tasks" element={<DashboardPage />} />
+          <Route path="bugs" element={<BugTrackerPage />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
